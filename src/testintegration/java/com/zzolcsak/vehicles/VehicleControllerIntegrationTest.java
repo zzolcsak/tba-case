@@ -1,6 +1,6 @@
 package com.zzolcsak.vehicles;
 
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -39,6 +39,13 @@ public class VehicleControllerIntegrationTest {
 	@Before
 	public void setUp() throws Exception {
 		repository.deleteAll();
+	}
+
+	@Test
+	public void whenCreateNewVehicle_thenItIsCreated() throws Exception {
+		mvc.perform(post("/vehicles")//
+				.contentType(MediaType.APPLICATION_JSON))//
+				.andExpect(status().isOk());
 	}
 
 	@Test

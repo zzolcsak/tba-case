@@ -35,8 +35,8 @@ public class VehicleServiceImpl implements VehicleService {
 		save(vehicle);
 	}
 
-	private void save(Vehicle vehicle) {
-		repository.save(vehicle);
+	private Vehicle save(Vehicle vehicle) {
+		return repository.save(vehicle);
 	}
 
 	@Override
@@ -62,6 +62,11 @@ public class VehicleServiceImpl implements VehicleService {
 	@Override
 	public Set<Vehicle> findAll() {
 		return new HashSet<>(repository.findAll());
+	}
+
+	@Override
+	public Vehicle createNewVehicle() {
+		return save(new Vehicle());
 	}
 
 }

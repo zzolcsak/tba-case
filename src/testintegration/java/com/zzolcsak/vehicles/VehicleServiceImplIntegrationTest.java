@@ -2,6 +2,8 @@ package com.zzolcsak.vehicles;
 
 import static org.junit.Assert.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import java.util.Optional;
@@ -47,6 +49,12 @@ public class VehicleServiceImplIntegrationTest {
 	public void whenFindById_thenCallsFindByIdMethodOfRepo() {
 		Vehicle v = vehicleService.findById(1L);
 		assertEquals(position, v.getPosition());
+	}
+	
+	@Test
+	public void whenCreate_thenCallsCreateMethodOfRepo() {
+		vehicleService.createNewVehicle();
+		verify(repository, times(1)).save(any());
 	}
 
 	// TODO add more tests

@@ -12,4 +12,5 @@ public interface VehicleService {
 	void moveRight(Long id);
 	Vehicle findById(Long id);
 	Set<Vehicle> findAll();
+	Vehicle createNewVehicle();
 }
