@@ -1,44 +1,67 @@
 package com.zzolcsak.vehicles;
 
+import java.util.HashSet;
+import java.util.Set;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.zzolcsak.vehicles.model.Position;
 import com.zzolcsak.vehicles.model.Position.Direction;
+import com.zzolcsak.vehicles.repository.VehicleRepository;
 import com.zzolcsak.vehicles.model.Vehicle;
 
 @Service
 public class VehicleServiceImpl implements VehicleService {
-	
-	private Vehicle vehicle = new Vehicle();
-	
+
+	@Autowired
+	private VehicleRepository repository;
+
 	@Override
-	public void resetVehicle() {
+	public void resetVehicle(Long id) {
+		Vehicle vehicle = findById(id);
 		vehicle.setPosition(Position.CENTER);
+		save(vehicle);
 	}
 
 	@Override
-	public Vehicle getVehicle() {
-		return vehicle;
+	public void moveUp(Long id) {
+		move(id, Direction.UP);
+	}
+
+	private void move(Long id, Direction direction) {
+		Vehicle vehicle = findById(id);
+		vehicle.setPosition(vehicle.getPosition().transform(direction));
+		save(vehicle);
+	}
+
+	private void save(Vehicle vehicle) {
+		repository.save(vehicle);
 	}
 
 	@Override
-	public void moveUp() {
-		vehicle.setPosition(vehicle.getPosition().transform(Direction.UP));
+	public void moveDown(Long id) {
+		move(id, Direction.DOWN);
 	}
 
 	@Override
-	public void moveDown() {
-		vehicle.setPosition(vehicle.getPosition().transform(Direction.DOWN));
+	public void moveLeft(Long id) {
+		move(id, Direction.LEFT);
 	}
 
 	@Override
-	public void moveLeft() {
-		vehicle.setPosition(vehicle.getPosition().transform(Direction.LEFT));
+	public void moveRight(Long id) {
+		move(id, Direction.RIGHT);
 	}
 
 	@Override
-	public void moveRight() {
-		vehicle.setPosition(vehicle.getPosition().transform(Direction.RIGHT));
+	public Vehicle findById(Long id) {
+		return repository.findById(id).get();
+	}
+
+	@Override
+	public Set<Vehicle> findAll() {
+		return new HashSet<>(repository.findAll());
 	}
 
 }

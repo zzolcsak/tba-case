@@ -1,17 +1,38 @@
 package com.zzolcsak.vehicles.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 /**
  * Represents a position on a discrete two-dimensional net. The directions are
  * negative x(left), positive x(right), negative y(down), positive y(up).
  */
+@Entity
+@Table(name = "position")
 public class Position {
 	public static enum Direction {
 		LEFT, RIGHT, UP, DOWN
 	}
 
+	public Position() {
+		x = 0;
+		y = 0;
+	}
+
 	public static Position CENTER = Position.of(0, 0);
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long id;
+
+	@Column(name = "x")
 	private final int x;
+
+	@Column(name = "y")
 	private final int y;
 
 	private Position(int x, int y) {

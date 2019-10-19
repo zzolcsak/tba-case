@@ -1,46 +1,54 @@
 package com.zzolcsak.vehicles;
 
+import java.util.Set;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.zzolcsak.vehicles.model.Vehicle;
 
 @RestController
-@RequestMapping("/vehicle")
+@RequestMapping("/vehicles")
 public class VehicleController {
 	@Autowired
 	private VehicleService vehicleService;
 
+	@GetMapping("/{id}")
+	public Vehicle getVehicle(@PathVariable Long id) {
+		return vehicleService.findById(id);
+	}
+	
 	@GetMapping
-	public Vehicle getVehicle() {
-		return vehicleService.getVehicle();
+	public Set<Vehicle> getVehicles() {
+		return vehicleService.findAll();
 	}
 
-	@GetMapping("/reset")
-	public Vehicle resetVehicle() {
-		vehicleService.resetVehicle();
-		return getVehicle();
+	@GetMapping("/{id}/reset")
+	public Vehicle resetVehicle(@PathVariable Long id) {
+		vehicleService.resetVehicle(id);
+		return getVehicle(id);
 	}
 
-	@GetMapping("/moveDown")
-	public void moveDown() {
-		vehicleService.moveDown();
+	@GetMapping("/{id}/moveDown")
+	public void moveDown(@PathVariable Long id) {
+		vehicleService.moveDown(id);
 	}
 
-	@GetMapping("/moveUp")
-	public void moveUp() {
-		vehicleService.moveUp();
+	@GetMapping("/{id}/moveUp")
+	public void moveUp(@PathVariable Long id) {
+		vehicleService.moveUp(id);
 	}
 
-	@GetMapping("/moveLeft")
-	public void moveLeft() {
-		vehicleService.moveLeft();
+	@GetMapping("/{id}/moveLeft")
+	public void moveLeft(@PathVariable Long id) {
+		vehicleService.moveLeft(id);
 	}
 
-	@GetMapping("/moveRight")
-	public void moveRight() {
-		vehicleService.moveRight();
+	@GetMapping("/{id}/moveRight")
+	public void moveRight(@PathVariable Long id) {
+		vehicleService.moveRight(id);
 	}
 }
