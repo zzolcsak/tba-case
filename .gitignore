@@ -1,17 +1,17 @@
-HELP.md
-target/
-!.mvn/wrapper/maven-wrapper.jar
+vehicles.server/HELP.md
+vehicles.server/target/
+!vehicles.server/.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**
 !**/src/test/**
 
 ### STS ###
-.apt_generated
-.classpath
-.factorypath
-.project
-.settings
-.springBeans
-.sts4-cache
+vehicles.server/.apt_generated
+vehicles.server/.classpath
+vehicles.server/.factorypath
+vehicles.server/.project
+vehicles.server/.settings
+vehicles.server/.springBeans
+vehicles.server/.sts4-cache
 
 ### IntelliJ IDEA ###
 .idea
