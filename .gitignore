@@ -1,6 +1,9 @@
 vehicles.server/HELP.md
 vehicles.server/target/
 !vehicles.server/.mvn/wrapper/maven-wrapper.jar
+vehicle.presenter/HELP.md
+vehicle.presenter/target/
+!vehicle.presenter/.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**
 !**/src/test/**
 
@@ -12,6 +15,13 @@ vehicles.server/.project
 vehicles.server/.settings
 vehicles.server/.springBeans
 vehicles.server/.sts4-cache
+vehicle.presenter/.apt_generated
+vehicle.presenter/.classpath
+vehicle.presenter/.factorypath
+vehicle.presenter/.project
+vehicle.presenter/.settings
+vehicle.presenter/.springBeans
+vehicle.presenter/.sts4-cache
 
 ### IntelliJ IDEA ###
 .idea
