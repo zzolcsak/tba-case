@@ -49,6 +49,7 @@ public class Application {
 					}
 				}
 			}
+			System.exit(0);
 		}
 	}
 
