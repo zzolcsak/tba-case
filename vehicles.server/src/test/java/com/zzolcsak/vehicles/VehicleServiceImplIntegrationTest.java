@@ -50,12 +50,10 @@ public class VehicleServiceImplIntegrationTest {
 		Vehicle v = vehicleService.findById(1L);
 		assertEquals(position, v.getPosition());
 	}
-	
+
 	@Test
 	public void whenCreate_thenCallsCreateMethodOfRepo() {
 		vehicleService.createNewVehicle();
 		verify(repository, times(1)).save(any());
 	}
-
-	// TODO add more tests
 }
