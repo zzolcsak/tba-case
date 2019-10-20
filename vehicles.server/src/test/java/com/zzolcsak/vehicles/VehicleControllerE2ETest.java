@@ -29,7 +29,7 @@ import com.zzolcsak.vehicles.repository.VehicleRepository;
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.MOCK)
 @AutoConfigureMockMvc
 @AutoConfigureTestDatabase
-public class VehicleControllerIntegrationTest {
+public class VehicleControllerE2ETest {
 	@Autowired
 	private MockMvc mvc;
 
